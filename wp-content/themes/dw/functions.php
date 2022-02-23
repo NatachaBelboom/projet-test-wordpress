@@ -18,6 +18,7 @@ register_post_type('trips', [
     'menu_position' => 5,
     'menu_icon' => 'dashicons-palmtree',
     'supports' => ['title', 'editor', 'thumbnail'],
+    'rewrite' => ['slug' => 'voyages']
 ]);
 
 //Récuperer les trips via une requete wordpress
