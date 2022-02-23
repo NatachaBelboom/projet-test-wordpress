@@ -11,3 +11,6 @@ Ce repository représente le projet de test du groupe B 2285 à la hepl.
 5. Configurer le site sia le fichier `wp-config.php` (et s'il n'existe pas, le créer sur base du contenu sur la base de contenu du fichier `wp-config-sample.php`). 
 6. Importer le fichier `database.sql` dans la base de données.
 
+### Plugins à installer
+ACF
+
