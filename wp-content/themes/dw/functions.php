@@ -17,4 +17,5 @@ register_post_type('trips', [
     'public' => true, //accessible dans l'interface admin (formulaire de contact: false)
     'menu_position' => 5,
     'menu_icon' => 'dashicons-palmtree',
+    'supports' => ['title', 'editor', 'thumbnail'],
 ]);
