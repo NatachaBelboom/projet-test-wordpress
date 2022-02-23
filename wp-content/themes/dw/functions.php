@@ -19,3 +19,18 @@ register_post_type('trips', [
     'menu_icon' => 'dashicons-palmtree',
     'supports' => ['title', 'editor', 'thumbnail'],
 ]);
+
+//Récuperer les trips via une requete wordpress
+function dw_get_trips($count = 20)
+{
+    // 1. on instancie l'objet WP_QUERY
+    $trips = new WP_Query([
+        'post_type' => 'trips',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'posts_per_page' => $count,
+    ]);
+    // 2. on retourne l'objet WP_QUERY
+    return $trips;
+
+}
