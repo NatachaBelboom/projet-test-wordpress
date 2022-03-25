@@ -13,7 +13,7 @@
         </div>
         <?php if (! isset($_SESSION['feedback_contact_form']) || ! $_SESSION['feedback_contact_form']['success']): ?> <!--quand tout va bien -->
             <form action="<?= get_home_url() ?>/wp-admin/admin-post.php" method="POST" class="contact__form form">
-                <?php if (isset($_SESSION['feedback_contact_form'])): ?>
+                <?php if (isset($_SESSION['feedback_contact_form']) && ! $_SESSION['feedback_contact_form']['success']) : ?>
                     <p class="form__errors">Oups! Ce formulaire contient des erreurs, merci de les corriger.</p>
                 <?php endif; ?>
                 <div class="form__field">
@@ -44,14 +44,14 @@
                 <div class="form__field">
                     <label for="rules" class="form__label">
                         <input type="checkbox" name="rules" id="rules" class="form__checkbox" value="1">
-                        <span class="form__checklabel">J'ai lu et j'accepte les <a href="">conditions générales d'utilisations</a>.</span>
+                        <span class="form__checklabel">J'ai lu et j'accepte les <a href="#">conditions générales d'utilisations</a>.</span>
                     </label>
                     <?= dw_get_contact_field_error('rules') ?>
                 </div>
                 <div class="form__actions">
                     <input type="hidden" name="action" value="submit_contact_form"/>
                     <?php wp_nonce_field('nonce_check_contact_form'); ?>
-                    <button type="submit">Envoyer</button>
+                    <button type="submit" class="form__button">Envoyer</button>
                 </div>
             </form>
         <?php else: ?>
@@ -59,4 +59,7 @@
         <?php endif; ?>
     </main>
 <?php endwhile; endif; ?>
-<?php get_footer(); ?>
+<?php get_footer();
+unset($_SESSION[''])
+?>
+

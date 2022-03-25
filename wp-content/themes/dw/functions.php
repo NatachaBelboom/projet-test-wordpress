@@ -146,10 +146,15 @@ function dw_handle_submit_contact_form()
     // envoyer un mail
     $content = "Bonjour, un nouveau message de contact a été envoyé. <br />";
     $content .= "Pour les visualiser: " . get_edit_post_link($id);
-    wp_mail('natacha.belboom@student.hepl.be', 'Nouveau message', $content);
 
+    wp_mail(get_bloginfo('admin_email'), 'Nouveau message', $content);
 
+    // Tout est OK, afficher le feedback positif
+    $_SESSION['feedback_contact_form'] = [
+        'success' => true,
+    ];
 
+    return wp_redirect($_POST['_wp_http_referer']);
 }
 
 function dw_verify_contact_form_nonce()
