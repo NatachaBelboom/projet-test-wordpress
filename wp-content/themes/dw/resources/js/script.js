@@ -3,7 +3,8 @@ class DW_Controller
     constructor()
     {
         console.log('ici c\'est le constructeur', document.body);
-        // à ce stade ci le dom n'est pas encore pret, car nous sommes dans le
+
+        // à ce stade ci le dom n'est pas encore pret, car nous sommes dans le <head>.
         //permet d'instancier des classes utilitaires par exemple.
     }
 
@@ -11,6 +12,7 @@ class DW_Controller
     {
         // désormais, le dom est pret. nous pouvons commencer à le manipuler.
         //Permet d'instancier des classes de composants d'interface par exemple.
+
         console.log('ici c\'est le run', document.body)
         //this.responsiveMenu = new ResponsiveMenu() ResponsiveMenu est un autre fichier js à importer au debut de ce fichier
     }
