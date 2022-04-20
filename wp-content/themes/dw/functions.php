@@ -2,6 +2,15 @@
 
 /*require_once(__DIR__ . '/Menus/PrimaryMenuWalker.php');*/
 require_once(__DIR__ . '/Menus/PrimaryMenuItem.php');
+require_once(__DIR__ . '/Forms/BaseFormController.php');
+require_once(__DIR__ . '/Forms/ContactFormController.php');
+require_once(__DIR__ . '/Forms/Sanitizers/BaseSanitizer.php');
+require_once(__DIR__ . '/Forms/Sanitizers/TextSanitizer.php');
+require_once(__DIR__ . '/Forms/Sanitizers/EmailSanitizer.php');
+require_once(__DIR__ . '/Forms/Validators/BaseValidator.php');
+require_once(__DIR__ . '/Forms/Validators/RequiredValidator.php');
+require_once(__DIR__ . '/Forms/Validators/EmailValidator.php');
+require_once(__DIR__ . '/Forms/Validators/AcceptedValidator.php');
 
 //lancer la session php
 
@@ -119,86 +128,7 @@ add_action('admin_post_submit_contact_form', 'dw_handle_submit_contact_form');
 
 function dw_handle_submit_contact_form()
 {
-    if(! dw_verify_contact_form_nonce()){
-        // TODO: afficher un message d'erreur unauthorized
-        return;
-    }
-
-    $data = dw_sanitize_contact_form_data();
-
-    if($errors = dw_validate_contact_form_data($data)){
-        $_SESSION['feedback_contact_form'] = [
-            'success' => false,
-            'data' => $data,
-            'errors' => $errors
-        ];
-
-        return wp_redirect($_POST['_wp_http_referer']); //revenir a la page ou on etait
-    }
-
-    // stocker en base de données
-    $id = wp_insert_post([
-        'post_type' => 'message',
-        'post_title' => 'Message de ' . $data['firstname'] . ' ' . $data['lastname'],
-        'post_content' => $data['message'],
-        'post_status' => 'publish',
-    ]);
-    // envoyer un mail
-    $content = "Bonjour, un nouveau message de contact a été envoyé. <br />";
-    $content .= "Pour les visualiser: " . get_edit_post_link($id);
-
-    wp_mail(get_bloginfo('admin_email'), 'Nouveau message', $content);
-
-    // Tout est OK, afficher le feedback positif
-    $_SESSION['feedback_contact_form'] = [
-        'success' => true,
-    ];
-
-    return wp_redirect($_POST['_wp_http_referer']);
-}
-
-function dw_verify_contact_form_nonce()
-{
-    $nonce = $_POST['_wpnonce']; //recuperer la valeur qui nous vient du post
-    return wp_verify_nonce($nonce, 'nonce_check_contact_form');
-}
-
-function dw_sanitize_contact_form_data()
-{
-    return [
-        'firstname' => sanitize_text_field($_POST['firstname'] ?? null),  //Sanitize pour "nettoyer" les données envoyées
-        'lastname' => sanitize_text_field($_POST['lastname'] ?? null),
-        'email' => sanitize_email($_POST['email'] ?? null),
-        'phone' => sanitize_text_field($_POST['phone'] ?? null),
-        'message' => sanitize_text_field($_POST['message'] ?? null),
-        'rules' => $_POST['rules'] ?? null,
-    ];
-}
-
-function dw_validate_contact_form_data($data)
-{
-    $errors = [];
-
-    $required = ['firstname', 'lastname', 'email', 'message'];
-    $email = ['email'];
-    $accepted = ['rules'];
-
-    foreach ($data as $key => $value){
-        if(in_array($key, $required) && !$value){
-            $errors[$key] = 'required';
-            continue;
-        }
-        if(in_array($key, $email) && !filter_var($value, FILTER_VALIDATE_EMAIL)){
-            $errors[$key] = 'email';
-            continue;
-        }
-        if(in_array($key, $accepted) && !$value != '1'){
-            $errors[$key] = 'accepted';
-            continue;
-        }
-    }
-
-    return $errors ? $errors : false;
+    $form = new ContactFormController($_POST);
 }
 
 function dw_get_contact_field_value($field){

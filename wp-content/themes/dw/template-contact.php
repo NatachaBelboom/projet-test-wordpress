@@ -49,17 +49,19 @@
                     <?= dw_get_contact_field_error('rules') ?>
                 </div>
                 <div class="form__actions">
-                    <input type="hidden" name="action" value="submit_contact_form"/>
-                    <?php wp_nonce_field('nonce_check_contact_form'); ?>
+                    <?php wp_nonce_field('nonce_submit_contact'); ?>
+                    <input type="hidden" name="action" value="submit_contact_form" />
                     <button type="submit" class="form__button">Envoyer</button>
                 </div>
             </form>
         <?php else: ?>
             <p class="form__feedback">Merci de nous avoir contacté. A bientot!</p>
+        <?php unset($_SESSION['feedback_contact_form']); ?>
         <?php endif; ?>
     </main>
 <?php endwhile; endif; ?>
-<?php get_footer();
-unset($_SESSION[''])
-?>
+<?php get_footer(); ?>
+
+
+
 
