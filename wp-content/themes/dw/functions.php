@@ -1,5 +1,6 @@
 <?php
 
+
 /*require_once(__DIR__ . '/Menus/PrimaryMenuWalker.php');*/
 require_once(__DIR__ . '/Menus/PrimaryMenuItem.php');
 require_once(__DIR__ . '/Forms/BaseFormController.php');
@@ -11,6 +12,7 @@ require_once(__DIR__ . '/Forms/Validators/BaseValidator.php');
 require_once(__DIR__ . '/Forms/Validators/RequiredValidator.php');
 require_once(__DIR__ . '/Forms/Validators/EmailValidator.php');
 require_once(__DIR__ . '/Forms/Validators/AcceptedValidator.php');
+require_once(__DIR__ . '/Forms/CustomSearchQuery.php');
 
 //lancer la session php
 
@@ -62,7 +64,7 @@ register_post_type('message', [
 ]);
 
 //Récuperer les trips via une requete wordpress
-function dw_get_trips($count = 20)
+function dw_get_trips($count = 20, $search = null)
 {
     // 1. on instancie l'objet WP_QUERY
     $trips = new WP_Query([
@@ -70,7 +72,9 @@ function dw_get_trips($count = 20)
         'orderby' => 'date',
         'order' => 'DESC',
         'posts_per_page' => $count,
+        's' => strlen($search) ? $search : null,
     ]);
+
     // 2. on retourne l'objet WP_QUERY
     return $trips;
 }
@@ -179,3 +183,15 @@ function dw_mix($path)
     // C'est OK, on génère l'URL vers la ressource sur base du nom de fichier avec cache-bursting.
     return get_stylesheet_directory_uri() . '/public' . $manifest[$path];
 }
+
+// On va se plugger dans l'exécution de la requete de recherche pour la contraindre à chercher dans les articles uniquement.
+function dw_configure_search_query($query) //obligé de mettre des if pour voir si on en a besoin car la focntion va s'executer tout le temps
+{
+    if($query->is_search && !is_admin() && !is_a($query, DW_CustomSearchQuery::class)){ //mettre !is_admin car sinon on casse l'admin
+        $query->set('post_type', ['post']);
+    }
+    return $query;
+}
+
+add_filter('pre_get_posts', 'dw_configure_search_query');
+
