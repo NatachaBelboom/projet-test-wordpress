@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="<?= dw_mix('css/style.css'); ?>">
     <script type="text/javascript" src="<?= dw_mix('js/script.js'); ?>"></script>
-    <title>Document</title>
+    <title>TODO</title>
 </head>
 <body>
 <header class="header">
@@ -16,7 +16,7 @@
 
     <nav class="header__nav nav">
         <h2 class="nav__title">
-            Navigation principale
+            <?= __('Navigation principale', 'dw') ?>
         </h2>
         <?php /*wp_nav_menu([
             'theme_location' => 'primary',
@@ -43,10 +43,10 @@
     </nav>
     <form method="get" action="<?= get_home_url(); ?>" role="search" class="header__search search">
         <div class="search__container">
-            <label for="header_search">Votre recherche</label>
+            <label for="header_search"><?= __('Votre recherche', 'dw') ?></label>
             <input type="text" name="s" id="header_search" value="<?= get_search_query(); ?>" class="search__input">
             <button type="submit" class="search__btn">
-                Rechercher
+                <?= __('Rechercher', 'dw') ?>
             </button>
         </div>
     </form>

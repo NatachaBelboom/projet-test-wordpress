@@ -6,7 +6,7 @@ class RequiredValidator extends BaseValidator
     {
         if(is_null($value) || $value === '' || (is_array($value) && empty($value)))
         {
-            return 'Ce champ ne peut pas être vide.';
+            return __('Ce champ ne peut pas etre vide', 'dw');
         }
 
         return null;
