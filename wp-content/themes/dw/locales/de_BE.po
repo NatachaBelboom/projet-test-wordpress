@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thème de test pour le cours de DW\n"
+"POT-Creation-Date: 2022-05-04 14:49+0200\n"
+"PO-Revision-Date: 2022-05-04 14:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: Natacha\n"
+"Language: de_BE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Forms/Validators/AcceptedValidator.php:9
+msgid "Veuillez cocher la case ci-dessus pour continuer"
+msgstr "Veuillez cocher la case ci-dessus pour continuer"
+
+#: Forms/Validators/EmailValidator.php:10
+msgid "Merci de fournir une adresse mail valide"
+msgstr "Merci de fournir une adresse mail valide"
+
+#: Forms/Validators/RequiredValidator.php:9
+msgid "Ce champ ne peut pas etre vide"
+msgstr "Ce champ ne peut pas etre vide"
+
+#: Partials/post.php:2
+msgid "Lire l'article \":title\""
+msgstr "Lire l'article \":title\""
+
+#: Partials/post.php:9
+msgid "Publié par :author le :date"
+msgstr "Publié par :author le :date"
+
+#: Partials/trip.php:2
+msgid "Lire le récit de voyage \":title\""
+msgstr "Lire le récit de voyage \":title\""
+
+#: footer.php:3
+msgid "Pied de page"
+msgstr "Pied de page"
+
+#: header.php:19
+msgid "Navigation principale"
+msgstr "Hauptnavigation"
+
+#: header.php:46
+msgid "Votre recherche"
+msgstr "Ihre Forschung"
+
+#: header.php:49
+msgid "Rechercher"
+msgstr "Suchen"
+
+#: index.php:6
+msgid "Introduction"
+msgstr "Introduction"
+
+#: index.php:8
+msgid "Bienvenue sur mon super site"
+msgstr "Bienvenue sur mon super site"
+
+#: index.php:12
+msgid "Nos dernières nouvelles"
+msgstr "Nos dernières nouvelles"
+
+#: index.php:18
+msgid "Il n'y a pas de post"
+msgstr "Il n'y a pas de post"
+
+#: index.php:24
+msgid "Mes derniers voyages"
+msgstr "Mes derniers voyages"
+
+#: index.php:30
+msgid "Il n'y a pas de voyages"
+msgstr "Il n'y a pas de voyages"
+
+#: search.php:5
+msgid "Les articles correspondant à votre recherche"
+msgstr "Les articles correspondant à votre recherche"
+
+#: search.php:10
+msgid "Il n'y a pas de résultats à afficher"
+msgstr "Il n'y a pas de résultats à afficher"
+
+#: search.php:15
+msgid "Les récits de voyage correspondant à votre recherche"
+msgstr "Les récits de voyage correspondant à votre recherche"
+
+#: search.php:20
+msgid "Il n'y a pas de voyage à raconter"
+msgstr "Il n'y a pas de voyage à raconter"
+
+#: single-trips.php:12
+msgid "Détails du voyage"
+msgstr "Détails du voyage"
+
+#: single-trips.php:14
+msgid "Date du départ"
+msgstr "Date du départ"
+
+#: single-trips.php:18
+msgid "Date de retour"
+msgstr "Date de retour"
+
+#: single-trips.php:23
+msgid "Aucune date de retour prévue pour le moment"
+msgstr "Aucune date de retour prévue pour le moment"
+
+#: template-contact.php:17
+msgid "Oups! Ce formulaire contient des erreurs, merci de les corriger."
+msgstr "Oups! Ce formulaire contient des erreurs, merci de les corriger."
+
+#: template-contact.php:20
+msgid "Votre prénom"
+msgstr "Votre prénom"
+
+#: template-contact.php:25
+msgid "Votre nom"
+msgstr "Votre nom"
+
+#: template-contact.php:30
+msgid "Votre email"
+msgstr "Votre email"
+
+#: template-contact.php:35
+msgid "Votre numéro de téléphone"
+msgstr "Votre numéro de téléphone"
+
+#: template-contact.php:40
+msgid "Votre message"
+msgstr "Votre message"
+
+#: template-contact.php:47
+msgid "conditions générales d'utilisation"
+msgstr "conditions générales d'utilisation"
+
+#: template-contact.php:47
+msgid "J'ai lu et j'accepte les :conditions."
+msgstr "J'ai lu et j'accepte les :conditions."
+
+#: template-contact.php:54
+msgid "Envoyer"
+msgstr "Envoyer"
+
+#: template-contact.php:58
+msgid "Merci de nous avoir contacté. A bientot!"
+msgstr "Merci de nous avoir contacté. A bientot!"
