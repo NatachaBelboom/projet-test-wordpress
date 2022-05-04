@@ -195,3 +195,13 @@ function dw_configure_search_query($query) //obligé de mettre des if pour voir 
 
 add_filter('pre_get_posts', 'dw_configure_search_query');
 
+//fonction permettant d'inclure des composants et d'y injecter des variables locales (scope de l'appel de fonction)
+function dw_include(string $partial, array $variables = [])
+{
+    //$partial = 'post'
+    // =>/Utilisateurs/.../wp-content/dw/partials/post.php
+
+    extract($variables);
+    include(__DIR__ . '/partials/' . $partial . '.php');
+}
+
