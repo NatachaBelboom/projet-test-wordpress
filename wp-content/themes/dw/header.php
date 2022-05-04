@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="<?= dw_mix('css/style.css'); ?>">
     <script type="text/javascript" src="<?= dw_mix('js/script.js'); ?>"></script>
+
+    <?php /*foreach(pll_the_languages(['raw' => true]) as $code => $locale): */?><!--
+        <link rel="alternate" href="<?/*= $locale['url'] */?>" hreflang="<?/*= $locale['locale'] */?>">
+    --><?php /*endforeach; */?>
+
+    <?php wp_head(); ?>
+
     <title>TODO</title>
 </head>
 <body>
