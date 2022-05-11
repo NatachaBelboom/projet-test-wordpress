@@ -54,6 +54,9 @@
                 </a>
             <?php endforeach; ?>
         </div>
+        <div class="nav__cta">
+            <a href="<?= get_permalink(dw_get_template_page('template-contact')) ?>" class="nav__contact"><?= __('Prendre contact', 'dw') ?></a>
+        </div>
     </nav>
     <form method="get" action="<?= get_home_url(); ?>" role="search" class="header__search search">
         <div class="search__container">
