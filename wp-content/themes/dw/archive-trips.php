@@ -4,7 +4,7 @@
         <nav class="trips__filters">
             <h3 class="sro"><?= __('Filtrer les résultats', 'dw'); ?></h3>
             <?php foreach (get_terms(['taxonomy' => 'country', 'hide_empty' => true]) as $country): ?>
-                <a href="?country=<?= $country->slug ?>"><?= $country->name ?></a>
+                <a href="?filter-country=<?= $country->slug ?>"><?= $country->name ?></a>
             <?php endforeach; ?>
         </nav>
         <div class="trips__container">
